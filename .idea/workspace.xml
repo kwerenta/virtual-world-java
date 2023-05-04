@@ -4,13 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c10708bc-87a8-45d8-8ea5-8f7f25cf2b2d" name="Changes" comment="Add simple Animal class">
-      <change afterPath="$PROJECT_DIR$/src/pl/edu/pg/animals/Sheep.java" afterDir="false" />
+    <list default="true" id="c10708bc-87a8-45d8-8ea5-8f7f25cf2b2d" name="Changes" comment="Add simple Sheep class">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pl/edu/pg/Animal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pl/edu/pg/Animal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pl/edu/pg/Organism.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pl/edu/pg/Organism.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pl/edu/pg/VirtualWorld.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pl/edu/pg/VirtualWorld.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pl/edu/pg/World.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pl/edu/pg/World.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pl/edu/pg/Frame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pl/edu/pg/Frame.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,7 +54,7 @@
       <option name="presentableId" value="Default" />
       <updated>1683197877907</updated>
       <workItem from="1683197879786" duration="1148000" />
-      <workItem from="1683225794819" duration="2092000" />
+      <workItem from="1683225794819" duration="4466000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1683198746569</created>
@@ -81,7 +77,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683227243455</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Add simple Sheep class">
+      <created>1683227952675</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1683227952675</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -114,6 +117,7 @@
     <MESSAGE value="Initial commit" />
     <MESSAGE value="Add base World and Organism classes" />
     <MESSAGE value="Add simple Animal class" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add simple Animal class" />
+    <MESSAGE value="Add simple Sheep class" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add simple Sheep class" />
   </component>
 </project>
