@@ -4,7 +4,7 @@ import java.awt.Point;
 
 public abstract class Organism {
     private final World world;
-    private Point position;
+    protected Point position;
     private int age;
     private int strength;
     private final int initiative;
