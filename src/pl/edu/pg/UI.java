@@ -10,6 +10,7 @@ import java.awt.*;
 public class UI extends JFrame {
     private static UI instance;
     private final JPanel container;
+    private World world;
 
     private UI() {
         super();
@@ -22,10 +23,20 @@ public class UI extends JFrame {
         container = new JPanel();
         container.setLayout(new CardLayout());
         container.add(new MainMenu(), Screens.MAIN_MENU.toString());
-        container.add(new GameScreen(), Screens.GAME.toString());
 
         add(container);
         setVisible(true);
+    }
+
+    public void createWorld(int width, int height) {
+        if (world == null) {
+            world = new World(width, height);
+            container.add(new GameScreen(), Screens.GAME.toString());
+        }
+    }
+
+    public World getWorld() {
+        return world;
     }
 
     public void setScreen(Screens name) {

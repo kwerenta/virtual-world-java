@@ -6,6 +6,8 @@ import javax.swing.*;
 import java.awt.*;
 
 public class MainMenu extends JPanel {
+    private final JSlider widthSlider;
+    private final JSlider heightSlider;
 
     public MainMenu() {
         super();
@@ -20,11 +22,17 @@ public class MainMenu extends JPanel {
         titleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         add(titleLabel);
 
-        add(new JSlider());
-        add(new JSlider());
+        widthSlider = new JSlider();
+        heightSlider = new JSlider();
+        add(widthSlider);
+        add(heightSlider);
 
         JButton startButton = new JButton("Start");
-        startButton.addActionListener(e -> UI.getInstace().setScreen(Screens.GAME));
+        startButton.addActionListener(e -> {
+            UI ui = UI.getInstace();
+            ui.createWorld(widthSlider.getValue(), heightSlider.getValue());
+            ui.setScreen(Screens.GAME);
+        });
         add(startButton);
     }
 }
