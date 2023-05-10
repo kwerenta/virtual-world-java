@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c10708bc-87a8-45d8-8ea5-8f7f25cf2b2d" name="Changes" comment="Add simple Sheep class">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pl/edu/pg/Frame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pl/edu/pg/Frame.java" afterDir="false" />
-    </list>
+    <list default="true" id="c10708bc-87a8-45d8-8ea5-8f7f25cf2b2d" name="Changes" comment="Change default frame" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -54,7 +51,7 @@
       <option name="presentableId" value="Default" />
       <updated>1683197877907</updated>
       <workItem from="1683197879786" duration="1148000" />
-      <workItem from="1683225794819" duration="4466000" />
+      <workItem from="1683225794819" duration="4627000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1683198746569</created>
@@ -84,7 +81,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683227952675</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Change default frame">
+      <created>1683230309995</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1683230309995</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -118,6 +122,7 @@
     <MESSAGE value="Add base World and Organism classes" />
     <MESSAGE value="Add simple Animal class" />
     <MESSAGE value="Add simple Sheep class" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add simple Sheep class" />
+    <MESSAGE value="Change default frame" />
+    <option name="LAST_COMMIT_MESSAGE" value="Change default frame" />
   </component>
 </project>
