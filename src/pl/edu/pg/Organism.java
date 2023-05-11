@@ -1,6 +1,6 @@
 package pl.edu.pg;
 
-import java.awt.Point;
+import java.awt.*;
 
 public abstract class Organism {
     private final World world;
@@ -20,9 +20,10 @@ public abstract class Organism {
     public Point getPosition() {
         return position;
     }
+
     protected void move(Point position) {
         position.setLocation(position);
     }
 
-    public abstract void draw();
+    public abstract String getSymbol();
 }

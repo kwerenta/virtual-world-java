@@ -9,6 +9,8 @@ import java.awt.*;
 
 public class UI extends JFrame {
     private static UI instance;
+    public final static int WIDTH = 800;
+    public final static int HEIGHT = 600;
     private final JPanel container;
     private World world;
 
@@ -18,7 +20,7 @@ public class UI extends JFrame {
         setTitle("Virtual World");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
-        setSize(800, 600);
+        setSize(WIDTH, HEIGHT);
 
         container = new JPanel();
         container.setLayout(new CardLayout());
