@@ -9,12 +9,12 @@ public class World {
     private final int width, height;
     private final Organism[][] map;
 
-    private PriorityQueue<Organism> actionOrder = new PriorityQueue<>(new OrganismComparator());
+    private final PriorityQueue<Organism> actionOrder = new PriorityQueue<>(new OrganismComparator());
 
     public World(int width, int height) {
         this.width = width;
         this.height = height;
-        map = new Organism[width][height];
+        map = new Organism[height][width];
         populate();
     }
 
