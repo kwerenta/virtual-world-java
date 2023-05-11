@@ -3,10 +3,13 @@ package pl.edu.pg;
 import pl.edu.pg.animals.Sheep;
 
 import java.awt.Point;
+import java.util.PriorityQueue;
 
 public class World {
-    private int width, height;
+    private final int width, height;
     private final Organism[][] map;
+
+    private PriorityQueue<Organism> actionOrder = new PriorityQueue<>(new OrganismComparator());
 
     public World(int width, int height) {
         this.width = width;
@@ -27,7 +30,13 @@ public class World {
         return width;
     }
 
+    public void spawn(Organism organism) {
+        map[organism.getPosition().y][organism.getPosition().x] = organism;
+        actionOrder.add(organism);
+    }
+
     private void populate() {
-        map[0][1] = new Sheep(this, new Point(1, 0), 1);
+        spawn(new Sheep(this, new Point(1, 0), 1));
+        spawn(new Sheep(this, new Point(2, 3), 1));
     }
 }

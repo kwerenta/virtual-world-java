@@ -1,8 +1,23 @@
 package pl.edu.pg;
 
 import java.awt.*;
+import java.util.Comparator;
+
+class OrganismComparator implements Comparator<Organism> {
+    @Override
+    public int compare(Organism o1, Organism o2) {
+        if (o1.getInitiative() > o2.getInitiative())
+            return 1;
+        else if (o1.getInitiative() == o2.getInitiative() && o1.getAge() > o2.getAge())
+            return 1;
+        else if (o1.getInitiative() < o2.getInitiative())
+            return -1;
+        return 0;
+    }
+}
 
 public abstract class Organism {
+
     private final World world;
     private Point position;
     private int age;
@@ -23,6 +38,18 @@ public abstract class Organism {
 
     protected void move(Point position) {
         position.setLocation(position);
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void updateAge() {
+        age++;
+    }
+
+    public int getInitiative() {
+        return initiative;
     }
 
     public abstract String getSymbol();
