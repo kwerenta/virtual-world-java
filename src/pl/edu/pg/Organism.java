@@ -18,8 +18,8 @@ class OrganismComparator implements Comparator<Organism> {
 
 public abstract class Organism {
 
-    private final World world;
-    private Point position;
+    protected final World world;
+    protected Point position;
     private int age;
     private int strength;
     private final int initiative;
@@ -34,10 +34,6 @@ public abstract class Organism {
 
     public Point getPosition() {
         return position;
-    }
-
-    protected void move(Point position) {
-        position.setLocation(position);
     }
 
     public int getAge() {
