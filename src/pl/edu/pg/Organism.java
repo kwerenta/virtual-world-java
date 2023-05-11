@@ -52,5 +52,7 @@ public abstract class Organism {
         return initiative;
     }
 
+    public abstract void action();
+
     public abstract String getSymbol();
 }

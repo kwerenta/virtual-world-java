@@ -33,6 +33,7 @@ public class UI extends JFrame {
     public void createWorld(int width, int height) {
         if (world == null) {
             world = new World(width, height);
+            world.makeTurn();
             container.add(new GameScreen(), Screens.GAME.toString());
         }
     }

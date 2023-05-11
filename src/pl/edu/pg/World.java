@@ -35,8 +35,17 @@ public class World {
         actionOrder.add(organism);
     }
 
+    public void makeTurn() {
+        PriorityQueue<Organism> currentOrder = new PriorityQueue<>(actionOrder);
+        currentOrder.forEach(organism -> {
+            if (organism.getAge() > 0)
+                organism.action();
+            organism.updateAge();
+        });
+    }
+
     private void populate() {
-        spawn(new Sheep(this, new Point(1, 0), 1));
+        spawn(new Sheep(this, new Point(1, 0), 3));
         spawn(new Sheep(this, new Point(2, 3), 1));
     }
 }
