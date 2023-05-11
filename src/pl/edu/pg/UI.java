@@ -12,6 +12,7 @@ public class UI extends JFrame {
     public final static int WIDTH = 800;
     public final static int HEIGHT = 600;
     private final JPanel container;
+    private JPanel gameScreen;
     private World world;
 
     private UI() {
@@ -26,6 +27,15 @@ public class UI extends JFrame {
         container.setLayout(new CardLayout());
         container.add(new MainMenu(), Screens.MAIN_MENU.toString());
 
+        JMenuBar menuBar = new JMenuBar();
+        JMenu menu = new JMenu("Menu");
+        menuBar.add(menu);
+
+        JMenuItem newGameItem = new JMenuItem("New Game");
+        newGameItem.addActionListener(e -> destroyWorld());
+        menu.add(newGameItem);
+
+        setJMenuBar(menuBar);
         add(container);
         setVisible(true);
     }
@@ -34,8 +44,17 @@ public class UI extends JFrame {
         if (world == null) {
             world = new World(width, height);
             world.makeTurn();
-            container.add(new GameScreen(), Screens.GAME.toString());
+
+            gameScreen = new GameScreen();
+            container.add(gameScreen, Screens.GAME.toString());
         }
+    }
+
+    public void destroyWorld() {
+        setScreen(Screens.MAIN_MENU);
+        container.remove(gameScreen);
+        gameScreen = null;
+        world = null;
     }
 
     public World getWorld() {
