@@ -43,6 +43,17 @@ public abstract class Animal extends Organism {
             return;
         }
 
+        if (hasRunAway()) {
+            shouldSkipTurn = true;
+            attacker.move(position);
+            List<Point> positions = getWorld().getAdjacentPositions(position, true);
+            System.out.println(getSymbol() + " avoided fight with " + attacker.getSymbol());
+            Random rand = new Random();
+            move(positions.get(rand.nextInt(positions.size())));
+            getWorld().setMap(position, this);
+            return;
+        }
+
         if (attacker.getStrength() >= getStrength()) {
             getWorld().despawn(this);
             attacker.move(position);
@@ -64,6 +75,10 @@ public abstract class Animal extends Organism {
     }
 
     protected boolean hasRepelled(Animal attacker) {
+        return false;
+    }
+
+    protected boolean hasRunAway() {
         return false;
     }
 
