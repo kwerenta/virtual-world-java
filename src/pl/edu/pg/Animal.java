@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Random;
 
 public abstract class Animal extends Organism {
+    private boolean shouldSkipTurn = false;
+
     public Animal(World world, Point position, int age, int strength, int initiative) {
         super(world, position, age, strength, initiative);
     }
@@ -12,19 +14,47 @@ public abstract class Animal extends Organism {
     @Override
     public void action() {
         Random rand = new Random();
-        List<Point> adjacentPositions = world.getAdjacentPositions(getPosition());
+        List<Point> adjacentPositions = getWorld().getAdjacentPositions(getPosition());
 
         Point newPosition = adjacentPositions.get(rand.nextInt(adjacentPositions.size()));
 
-        if (world.getMap(newPosition) == null)
+        Organism target = getWorld().getMap(newPosition);
+        if (target == null)
             move(newPosition);
         else
-            System.out.println("NOT EMPTY");
+            target.collision(this);
     }
 
     public void move(Point newPosition) {
-        world.setMap(newPosition, this);
-        world.setMap(position, null);
+        getWorld().setMap(newPosition, this);
+        getWorld().setMap(position, null);
         position.setLocation(newPosition);
+    }
+
+    @Override
+    protected void collision(Animal attacker) {
+        if (getSpecies() == attacker.getSpecies()) {
+            breed();
+        } else {
+            System.out.println("FIGHT");
+        }
+    }
+
+    private void breed() {
+        if (getAge() == 0 || shouldSkipTurn) return;
+
+        Point newPosition = getWorld().getFreePosition(getPosition());
+        if (newPosition != getPosition())
+            getWorld().spawn(OrganismsFactory.getOrganism(getSpecies(), getWorld(), newPosition));
+
+        shouldSkipTurn = true;
+    }
+
+    public boolean getShouldSkipTurn() {
+        return shouldSkipTurn;
+    }
+
+    public void skipTurn() {
+        shouldSkipTurn = false;
     }
 }

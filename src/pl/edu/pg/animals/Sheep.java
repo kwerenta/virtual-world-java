@@ -14,4 +14,9 @@ public class Sheep extends Animal {
     public String getSymbol() {
         return "S";
     }
+
+    @Override
+    public Species getSpecies() {
+        return Species.SHEEP;
+    }
 }

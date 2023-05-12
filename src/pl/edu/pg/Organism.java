@@ -17,8 +17,11 @@ class OrganismComparator implements Comparator<Organism> {
 }
 
 public abstract class Organism {
+    public enum Species {
+        SHEEP
+    }
 
-    protected final World world;
+    private final World world;
     protected Point position;
     private int age;
     private int strength;
@@ -30,6 +33,18 @@ public abstract class Organism {
         this.age = age;
         this.strength = strength;
         this.initiative = initiative;
+    }
+
+    public World getWorld() {
+        return world;
+    }
+
+    public int getStrength() {
+        return strength;
+    }
+
+    public void setStrength(int strength) {
+        this.strength = strength;
     }
 
     public Point getPosition() {
@@ -50,5 +65,9 @@ public abstract class Organism {
 
     public abstract void action();
 
+    protected abstract void collision(Animal attacker);
+
     public abstract String getSymbol();
+
+    public abstract Species getSpecies();
 }

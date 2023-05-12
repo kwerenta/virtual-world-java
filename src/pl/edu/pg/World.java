@@ -3,10 +3,7 @@ package pl.edu.pg;
 import pl.edu.pg.animals.Sheep;
 
 import java.awt.Point;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.PriorityQueue;
+import java.util.*;
 
 public class World {
     private final int width, height;
@@ -49,6 +46,12 @@ public class World {
     public void makeTurn() {
         PriorityQueue<Organism> currentOrder = new PriorityQueue<>(actionOrder);
         currentOrder.forEach(organism -> {
+            if (organism instanceof Animal animal && animal.getShouldSkipTurn()) {
+                animal.skipTurn();
+                animal.updateAge();
+                return;
+            }
+
             if (organism.getAge() > 0)
                 organism.action();
             organism.updateAge();
@@ -59,13 +62,25 @@ public class World {
         return position.x >= 0 && position.x < width && position.y >= 0 && position.y < height;
     }
 
+    public Point getFreePosition(Point position) {
+        List<Point> positions = getAdjacentPositions(position, true);
+        if (positions.isEmpty()) return position;
+        Random rand = new Random();
+        return positions.get(rand.nextInt(positions.size()));
+    }
+
     public List<Point> getAdjacentPositions(Point position) {
+        return getAdjacentPositions(position, false);
+    }
+
+    public List<Point> getAdjacentPositions(Point position, boolean isFree) {
         List<Point> positions = new ArrayList<>(
                 Arrays.asList(new Point(1, 0), new Point(-1, 0), new Point(0, 1), new Point(0, -1))
         );
         return positions.stream()
                 .map(vector -> new Point(position.x + vector.x, position.y + vector.y))
                 .filter((this::isValidPosition))
+                .filter(pos -> !isFree || getMap(pos) == null)
                 .toList();
     }
 
