@@ -6,13 +6,15 @@ import pl.edu.pg.ui.Screens;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
-public class UI extends JFrame {
+public class UI extends JFrame implements KeyListener {
     private static UI instance;
     public final static int WIDTH = 800;
     public final static int HEIGHT = 600;
     private final JPanel container;
-    private JPanel gameScreen;
+    private GameScreen gameScreen;
     private World world;
 
     private UI() {
@@ -37,13 +39,16 @@ public class UI extends JFrame {
 
         setJMenuBar(menuBar);
         add(container);
+
+        addKeyListener(this);
         setVisible(true);
+        setFocusable(true);
+        requestFocus();
     }
 
     public void createWorld(int width, int height) {
         if (world == null) {
             world = new World(width, height);
-            world.makeTurn();
 
             gameScreen = new GameScreen();
             container.add(gameScreen, Screens.GAME.toString());
@@ -71,5 +76,25 @@ public class UI extends JFrame {
             instance = new UI();
 
         return instance;
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+        if (world == null)
+            return;
+
+        if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+            world.makeTurn();
+            gameScreen.updateBoard();
+        }
+
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
     }
 }
