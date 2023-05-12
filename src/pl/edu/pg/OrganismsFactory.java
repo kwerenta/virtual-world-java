@@ -2,6 +2,7 @@ package pl.edu.pg;
 
 import pl.edu.pg.animals.Sheep;
 import pl.edu.pg.animals.Wolf;
+import pl.edu.pg.plants.Grass;
 
 import java.awt.*;
 
@@ -14,6 +15,7 @@ public class OrganismsFactory {
         return switch (species) {
             case SHEEP -> new Sheep(world, position, age);
             case WOLF -> new Wolf(world, position, age);
+            case GRASS -> new Grass(world, position, age);
         };
     }
 }
