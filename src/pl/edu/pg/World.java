@@ -49,18 +49,19 @@ public class World {
 
     public void makeTurn() {
         PriorityQueue<Organism> currentOrder = new PriorityQueue<>(actionOrder);
-        currentOrder.forEach(organism -> {
+        while (!currentOrder.isEmpty()) {
+            Organism organism = currentOrder.poll();
             if (organism instanceof Animal animal && animal.getShouldSkipTurn()) {
                 animal.skipTurn();
                 animal.updateAge();
-                return;
+                continue;
             }
 
             if (organism.getAge() > 0)
                 organism.action();
 
             organism.updateAge();
-        });
+        }
     }
 
     public void addLog(String message) {
