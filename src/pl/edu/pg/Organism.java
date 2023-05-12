@@ -18,7 +18,8 @@ class OrganismComparator implements Comparator<Organism> {
 
 public abstract class Organism {
     public enum Species {
-        SHEEP
+        SHEEP,
+        WOLF
     }
 
     private final World world;

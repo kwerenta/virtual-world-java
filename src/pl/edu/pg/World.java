@@ -1,6 +1,7 @@
 package pl.edu.pg;
 
 import pl.edu.pg.animals.Sheep;
+import pl.edu.pg.animals.Wolf;
 
 import java.awt.Point;
 import java.util.*;
@@ -87,5 +88,7 @@ public class World {
     private void populate() {
         spawn(new Sheep(this, new Point(1, 0), 3));
         spawn(new Sheep(this, new Point(2, 3), 1));
+        spawn(new Wolf(this, new Point(3, 4), 2));
+        spawn(new Wolf(this, new Point(2, 2), 4));
     }
 }
