@@ -20,7 +20,7 @@ public abstract class Plant extends Organism {
     }
 
     @Override
-    protected void collision(Animal attacker) {
+    public void collision(Animal attacker) {
         getWorld().despawn(this);
         attacker.move(position);
         getWorld().addLog(attacker.getSymbol() + " ate " + getSymbol());

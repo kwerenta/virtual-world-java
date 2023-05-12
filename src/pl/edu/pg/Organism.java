@@ -7,8 +7,8 @@ class OrganismComparator implements Comparator<Organism> {
     public int compare(Organism o1, Organism o2) {
         if (o1.getInitiative() > o2.getInitiative())
             return -1;
-        else if (o1.getInitiative() == o2.getInitiative() && o1.getAge() > o2.getAge())
-            return -1;
+        else if (o1.getInitiative() == o2.getInitiative())
+            return Integer.compare(o2.getAge(), o1.getAge());
         else if (o1.getInitiative() < o2.getInitiative())
             return 1;
         return 0;
@@ -79,7 +79,7 @@ public abstract class Organism {
 
     public abstract void action();
 
-    protected abstract void collision(Animal attacker);
+    public abstract void collision(Animal attacker);
 
     public abstract String getSymbol();
 

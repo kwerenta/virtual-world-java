@@ -13,11 +13,15 @@ public class Fox extends Animal {
 
     @Override
     public void action() {
-        Organism target = getWorld().getMap(getAdjacentPosition());
-        if (target != null && getSpecies() != target.getSpecies() && target.getStrength() > getStrength())
-            getWorld().addLog(getSymbol() + " sensed that there was a stronger organism on its way");
-        else
-            super.action();
+        Point newPosition = getAdjacentPosition();
+        Organism target = getWorld().getMap(newPosition);
+        if (target != null) {
+            if (getSpecies() != target.getSpecies() && target.getStrength() > getStrength())
+                getWorld().addLog(getSymbol() + " sensed that there was a stronger organism on its way");
+            else
+                target.collision(this);
+        } else
+            move(newPosition);
 
     }
 

@@ -26,7 +26,7 @@ public abstract class Animal extends Organism {
     }
 
     @Override
-    protected void collision(Animal attacker) {
+    public void collision(Animal attacker) {
         if (getSpecies() == attacker.getSpecies()) {
             breed();
             return;
