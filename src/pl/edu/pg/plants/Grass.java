@@ -1,9 +1,8 @@
 package pl.edu.pg.plants;
 
 import pl.edu.pg.Plant;
+import pl.edu.pg.Point;
 import pl.edu.pg.World;
-
-import java.awt.*;
 
 public class Grass extends Plant {
     public Grass(World world, Point position, int age) {

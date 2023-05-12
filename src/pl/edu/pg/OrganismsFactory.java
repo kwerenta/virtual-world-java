@@ -5,8 +5,6 @@ import pl.edu.pg.animals.Sheep;
 import pl.edu.pg.animals.Wolf;
 import pl.edu.pg.plants.Grass;
 
-import java.awt.*;
-
 public class OrganismsFactory {
     public static Organism getOrganism(Organism.Species species, World world, Point position) {
         return getOrganism(species, world, position, 0);

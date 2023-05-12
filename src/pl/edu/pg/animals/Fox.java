@@ -2,11 +2,8 @@ package pl.edu.pg.animals;
 
 import pl.edu.pg.Animal;
 import pl.edu.pg.Organism;
+import pl.edu.pg.Point;
 import pl.edu.pg.World;
-
-import java.awt.*;
-import java.util.List;
-import java.util.Random;
 
 public class Fox extends Animal {
 

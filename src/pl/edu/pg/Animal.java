@@ -1,8 +1,5 @@
 package pl.edu.pg;
 
-import java.awt.*;
-
-
 public abstract class Animal extends Organism {
     private boolean shouldSkipTurn = false;
 
@@ -24,7 +21,7 @@ public abstract class Animal extends Organism {
     public void move(Point newPosition) {
         getWorld().setMap(newPosition, this);
         getWorld().setMap(position, null);
-        position.setLocation(newPosition);
+        position.update(newPosition);
         getWorld().addLog(getSymbol() + " moved to " + position);
     }
 

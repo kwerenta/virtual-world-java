@@ -1,6 +1,5 @@
 package pl.edu.pg;
 
-import java.awt.*;
 import java.util.Comparator;
 
 class OrganismComparator implements Comparator<Organism> {

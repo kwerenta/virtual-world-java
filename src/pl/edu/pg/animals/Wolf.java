@@ -1,9 +1,9 @@
 package pl.edu.pg.animals;
 
 import pl.edu.pg.Animal;
+import pl.edu.pg.Point;
 import pl.edu.pg.World;
 
-import java.awt.*;
 
 public class Wolf extends Animal {
     public Wolf(World world, Point position, int age) {

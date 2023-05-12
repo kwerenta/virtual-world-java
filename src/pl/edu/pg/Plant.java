@@ -1,6 +1,5 @@
 package pl.edu.pg;
 
-import java.awt.*;
 import java.util.Random;
 
 public abstract class Plant extends Organism {

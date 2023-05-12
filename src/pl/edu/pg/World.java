@@ -1,6 +1,5 @@
 package pl.edu.pg;
 
-import java.awt.Point;
 import java.util.*;
 
 public class World {
@@ -18,7 +17,7 @@ public class World {
     }
 
     public Organism getMap(Point pos) {
-        return map[pos.y][pos.x];
+        return map[pos.getY()][pos.getX()];
     }
 
     public Organism getMap(int x, int y) {
@@ -26,7 +25,7 @@ public class World {
     }
 
     public void setMap(Point pos, Organism organism) {
-        map[pos.y][pos.x] = organism;
+        map[pos.getY()][pos.getX()] = organism;
     }
 
     public int getHeight() {
@@ -77,7 +76,7 @@ public class World {
     }
 
     public boolean isValidPosition(Point position) {
-        return position.x >= 0 && position.x < width && position.y >= 0 && position.y < height;
+        return position.getX() >= 0 && position.getX() < width && position.getY() >= 0 && position.getY() < height;
     }
 
     public Point getFreePosition(Point position) {
@@ -102,7 +101,7 @@ public class World {
                 Arrays.asList(new Point(1, 0), new Point(-1, 0), new Point(0, 1), new Point(0, -1))
         );
         return vectors.stream()
-                .map(vector -> new Point(position.x + vector.x, position.y + vector.y))
+                .map(vector -> vector.getTranslated(position))
                 .filter(this::isValidPosition)
                 .filter(pos -> !shouldBeFree || getMap(pos) == null)
                 .toList();
