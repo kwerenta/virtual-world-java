@@ -60,6 +60,10 @@ public abstract class Organism {
         age++;
     }
 
+    public void kill() {
+        age = -1;
+    }
+
     public int getInitiative() {
         return initiative;
     }

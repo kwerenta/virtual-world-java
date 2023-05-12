@@ -35,8 +35,16 @@ public abstract class Animal extends Organism {
     protected void collision(Animal attacker) {
         if (getSpecies() == attacker.getSpecies()) {
             breed();
+            return;
+        }
+
+        if (attacker.getStrength() >= getStrength()) {
+            getWorld().despawn(this);
+            attacker.move(position);
+            System.out.println(attacker.getSymbol() + " attacked and won with " + getSymbol());
         } else {
-            System.out.println("FIGHT");
+            getWorld().despawn(attacker);
+            System.out.println(attacker.getSymbol() + " attacked and lost with " + getSymbol());
         }
     }
 

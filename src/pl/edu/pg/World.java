@@ -40,8 +40,14 @@ public class World {
     }
 
     public void spawn(Organism organism) {
-        map[organism.getPosition().y][organism.getPosition().x] = organism;
+        setMap(organism.position, organism);
         actionOrder.add(organism);
+    }
+
+    public void despawn(Organism organism) {
+        setMap(organism.position, null);
+        organism.kill();
+        actionOrder.remove(organism);
     }
 
     public void makeTurn() {
@@ -55,6 +61,7 @@ public class World {
 
             if (organism.getAge() > 0)
                 organism.action();
+
             organism.updateAge();
         });
     }
