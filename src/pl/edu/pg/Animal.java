@@ -38,6 +38,11 @@ public abstract class Animal extends Organism {
             return;
         }
 
+        if (hasRepelled(attacker)) {
+            System.out.println(getSymbol() + " repelled attack of " + attacker.getSymbol());
+            return;
+        }
+
         if (attacker.getStrength() >= getStrength()) {
             getWorld().despawn(this);
             attacker.move(position);
@@ -56,6 +61,10 @@ public abstract class Animal extends Organism {
             getWorld().spawn(OrganismsFactory.getOrganism(getSpecies(), getWorld(), newPosition));
 
         shouldSkipTurn = true;
+    }
+
+    protected boolean hasRepelled(Animal attacker) {
+        return false;
     }
 
     public boolean getShouldSkipTurn() {
