@@ -70,6 +70,15 @@ public abstract class Organism {
         return initiative;
     }
 
+    public Point getAdjacentPosition() {
+        return getWorld().getAdjacentPosition(position);
+    }
+
+    public Point getFreePosition() {
+        return getWorld().getFreePosition(position);
+    }
+
+
     public abstract void action();
 
     protected abstract void collision(Animal attacker);

@@ -74,18 +74,24 @@ public class World {
         return positions.get(rand.nextInt(positions.size()));
     }
 
-    public List<Point> getAdjacentPositions(Point position) {
+    public Point getAdjacentPosition(Point position) {
+        List<Point> positions = getAdjacentPositions(position);
+        Random rand = new Random();
+        return positions.get(rand.nextInt(positions.size()));
+    }
+
+    private List<Point> getAdjacentPositions(Point position) {
         return getAdjacentPositions(position, false);
     }
 
-    public List<Point> getAdjacentPositions(Point position, boolean isFree) {
-        List<Point> positions = new ArrayList<>(
+    private List<Point> getAdjacentPositions(Point position, boolean shouldBeFree) {
+        List<Point> vectors = new ArrayList<>(
                 Arrays.asList(new Point(1, 0), new Point(-1, 0), new Point(0, 1), new Point(0, -1))
         );
-        return positions.stream()
+        return vectors.stream()
                 .map(vector -> new Point(position.x + vector.x, position.y + vector.y))
-                .filter((this::isValidPosition))
-                .filter(pos -> !isFree || getMap(pos) == null)
+                .filter(this::isValidPosition)
+                .filter(pos -> !shouldBeFree || getMap(pos) == null)
                 .toList();
     }
 

@@ -1,8 +1,6 @@
 package pl.edu.pg;
 
 import java.awt.*;
-import java.util.List;
-import java.util.Random;
 
 public abstract class Animal extends Organism {
     private boolean shouldSkipTurn = false;
@@ -13,12 +11,9 @@ public abstract class Animal extends Organism {
 
     @Override
     public void action() {
-        Random rand = new Random();
-        List<Point> adjacentPositions = getWorld().getAdjacentPositions(getPosition());
-
-        Point newPosition = adjacentPositions.get(rand.nextInt(adjacentPositions.size()));
-
+        Point newPosition = getAdjacentPosition();
         Organism target = getWorld().getMap(newPosition);
+
         if (target == null)
             move(newPosition);
         else
@@ -46,10 +41,8 @@ public abstract class Animal extends Organism {
         if (hasRunAway()) {
             shouldSkipTurn = true;
             attacker.move(position);
-            List<Point> positions = getWorld().getAdjacentPositions(position, true);
             System.out.println(getSymbol() + " avoided fight with " + attacker.getSymbol());
-            Random rand = new Random();
-            move(positions.get(rand.nextInt(positions.size())));
+            move(getFreePosition());
             getWorld().setMap(position, this);
             return;
         }

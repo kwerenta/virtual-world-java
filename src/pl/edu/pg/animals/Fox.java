@@ -16,10 +16,7 @@ public class Fox extends Animal {
 
     @Override
     public void action() {
-        List<Point> positions = getWorld().getAdjacentPositions(position);
-        Random rand = new Random();
-        Point newPosition = positions.get(rand.nextInt(positions.size()));
-        Organism target = getWorld().getMap(newPosition);
+        Organism target = getWorld().getMap(getAdjacentPosition());
         if (target != null && getSpecies() != target.getSpecies() && target.getStrength() > getStrength())
             System.out.println(getSymbol() + " sensed that there was a stronger organism on its way");
         else

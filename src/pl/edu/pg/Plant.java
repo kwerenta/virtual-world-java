@@ -28,7 +28,7 @@ public abstract class Plant extends Organism {
     }
 
     private void spread() {
-        Point newPosition = getWorld().getFreePosition(position);
+        Point newPosition = getFreePosition();
         if (newPosition != null) {
             getWorld().spawn(OrganismsFactory.getOrganism(getSpecies(), getWorld(), newPosition));
             System.out.println("New " + getSymbol() + " has grown");
