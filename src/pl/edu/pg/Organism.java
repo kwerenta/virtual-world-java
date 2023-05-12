@@ -7,11 +7,11 @@ class OrganismComparator implements Comparator<Organism> {
     @Override
     public int compare(Organism o1, Organism o2) {
         if (o1.getInitiative() > o2.getInitiative())
-            return 1;
-        else if (o1.getInitiative() == o2.getInitiative() && o1.getAge() > o2.getAge())
-            return 1;
-        else if (o1.getInitiative() < o2.getInitiative())
             return -1;
+        else if (o1.getInitiative() == o2.getInitiative() && o1.getAge() > o2.getAge())
+            return -1;
+        else if (o1.getInitiative() < o2.getInitiative())
+            return 1;
         return 0;
     }
 }

@@ -1,8 +1,5 @@
 package pl.edu.pg;
 
-import pl.edu.pg.animals.Sheep;
-import pl.edu.pg.animals.Wolf;
-
 import java.awt.Point;
 import java.util.*;
 
