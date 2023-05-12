@@ -20,6 +20,7 @@ public abstract class Organism {
     public enum Species {
         SHEEP,
         WOLF,
+        FOX,
         GRASS
     }
 

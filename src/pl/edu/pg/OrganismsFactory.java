@@ -1,5 +1,6 @@
 package pl.edu.pg;
 
+import pl.edu.pg.animals.Fox;
 import pl.edu.pg.animals.Sheep;
 import pl.edu.pg.animals.Wolf;
 import pl.edu.pg.plants.Grass;
@@ -16,6 +17,7 @@ public class OrganismsFactory {
             case SHEEP -> new Sheep(world, position, age);
             case WOLF -> new Wolf(world, position, age);
             case GRASS -> new Grass(world, position, age);
+            case FOX -> new Fox(world, position, age);
         };
     }
 }
