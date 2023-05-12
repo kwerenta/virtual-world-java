@@ -2,6 +2,7 @@ package pl.edu.pg;
 
 import java.awt.*;
 
+
 public abstract class Animal extends Organism {
     private boolean shouldSkipTurn = false;
 
@@ -24,6 +25,7 @@ public abstract class Animal extends Organism {
         getWorld().setMap(newPosition, this);
         getWorld().setMap(position, null);
         position.setLocation(newPosition);
+        getWorld().addLog(getSymbol() + " moved to " + position);
     }
 
     @Override
@@ -34,14 +36,14 @@ public abstract class Animal extends Organism {
         }
 
         if (hasRepelled(attacker)) {
-            System.out.println(getSymbol() + " repelled attack of " + attacker.getSymbol());
+            getWorld().addLog(getSymbol() + " repelled attack of " + attacker.getSymbol());
             return;
         }
 
         if (hasRunAway()) {
             shouldSkipTurn = true;
             attacker.move(position);
-            System.out.println(getSymbol() + " avoided fight with " + attacker.getSymbol());
+            getWorld().addLog(getSymbol() + " avoided fight with " + attacker.getSymbol());
             move(getFreePosition());
             getWorld().setMap(position, this);
             return;
@@ -50,21 +52,23 @@ public abstract class Animal extends Organism {
         if (attacker.getStrength() >= getStrength()) {
             getWorld().despawn(this);
             attacker.move(position);
-            System.out.println(attacker.getSymbol() + " attacked and won with " + getSymbol());
+            getWorld().addLog(attacker.getSymbol() + " attacked and won with " + getSymbol());
         } else {
             getWorld().despawn(attacker);
-            System.out.println(attacker.getSymbol() + " attacked and lost with " + getSymbol());
+            getWorld().addLog(attacker.getSymbol() + " attacked and lost with " + getSymbol());
         }
     }
 
     private void breed() {
         if (getAge() == 0 || shouldSkipTurn) return;
+        shouldSkipTurn = true;
 
         Point newPosition = getWorld().getFreePosition(getPosition());
-        if (newPosition != getPosition())
-            getWorld().spawn(OrganismsFactory.getOrganism(getSpecies(), getWorld(), newPosition));
+        if (newPosition == getPosition()) return;
 
-        shouldSkipTurn = true;
+        getWorld().spawn(OrganismsFactory.getOrganism(getSpecies(), getWorld(), newPosition));
+        getWorld().addLog("New " + getSymbol() + " has born " + newPosition);
+
     }
 
     protected boolean hasRepelled(Animal attacker) {

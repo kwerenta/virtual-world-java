@@ -86,6 +86,7 @@ public class UI extends JFrame implements KeyListener {
         if (e.getKeyCode() == KeyEvent.VK_ENTER) {
             world.makeTurn();
             gameScreen.updateBoard();
+            gameScreen.updateLogs();
         }
 
     }

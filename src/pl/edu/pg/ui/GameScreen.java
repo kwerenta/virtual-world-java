@@ -10,6 +10,7 @@ import java.awt.*;
 public class GameScreen extends JPanel {
     private final JButton[][] cells;
     private final World world;
+    private final JTextArea logsArea;
 
     public GameScreen() {
         super();
@@ -35,7 +36,9 @@ public class GameScreen extends JPanel {
         JPanel logs = new JPanel();
         logs.setPreferredSize(new Dimension(200, UI.HEIGHT));
         logs.setBackground(Color.GRAY);
-        logs.add(new Label("Logs"));
+        logsArea = new JTextArea();
+        logsArea.setEditable(false);
+        logs.add(logsArea);
 
         add(board, BorderLayout.CENTER);
         add(logs, BorderLayout.LINE_END);
@@ -53,5 +56,11 @@ public class GameScreen extends JPanel {
 
             }
         }
+    }
+
+    public void updateLogs() {
+        logsArea.setText("");
+        while (!world.areLogsEmpty())
+            logsArea.append(world.popLog() + '\n');
     }
 }

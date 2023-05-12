@@ -18,7 +18,7 @@ public class Fox extends Animal {
     public void action() {
         Organism target = getWorld().getMap(getAdjacentPosition());
         if (target != null && getSpecies() != target.getSpecies() && target.getStrength() > getStrength())
-            System.out.println(getSymbol() + " sensed that there was a stronger organism on its way");
+            getWorld().addLog(getSymbol() + " sensed that there was a stronger organism on its way");
         else
             super.action();
 

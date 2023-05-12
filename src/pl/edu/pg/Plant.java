@@ -24,14 +24,14 @@ public abstract class Plant extends Organism {
     protected void collision(Animal attacker) {
         getWorld().despawn(this);
         attacker.move(position);
-        System.out.println(attacker.getSymbol() + " ate " + getSymbol());
+        getWorld().addLog(attacker.getSymbol() + " ate " + getSymbol());
     }
 
     private void spread() {
         Point newPosition = getFreePosition();
         if (newPosition != null) {
             getWorld().spawn(OrganismsFactory.getOrganism(getSpecies(), getWorld(), newPosition));
-            System.out.println("New " + getSymbol() + " has grown");
+            getWorld().addLog("New " + getSymbol() + " has grown " + newPosition);
         }
     }
 }

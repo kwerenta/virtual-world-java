@@ -6,8 +6,9 @@ import java.util.*;
 public class World {
     private final int width, height;
     private final Organism[][] map;
-
     private final PriorityQueue<Organism> actionOrder = new PriorityQueue<>(new OrganismComparator());
+
+    private final Stack<String> logs = new Stack<>();
 
     public World(int width, int height) {
         this.width = width;
@@ -61,6 +62,18 @@ public class World {
 
             organism.updateAge();
         });
+    }
+
+    public void addLog(String message) {
+        logs.push(message);
+    }
+
+    public String popLog() {
+        return logs.pop();
+    }
+
+    public boolean areLogsEmpty() {
+        return logs.empty();
     }
 
     public boolean isValidPosition(Point position) {

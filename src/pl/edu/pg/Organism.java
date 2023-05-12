@@ -78,7 +78,6 @@ public abstract class Organism {
         return getWorld().getFreePosition(position);
     }
 
-
     public abstract void action();
 
     protected abstract void collision(Animal attacker);
