@@ -85,10 +85,27 @@ public class World {
                 .toList();
     }
 
+    private Point getRandomPosition() {
+        if (actionOrder.size() == width * height) return null;
+        Random rand = new Random();
+        Point position;
+        do {
+            position = new Point(rand.nextInt(width), rand.nextInt(height));
+        } while (getMap(position) != null);
+
+        return position;
+    }
+
     private void populate() {
-        spawn(new Sheep(this, new Point(1, 0), 3));
-        spawn(new Sheep(this, new Point(2, 3), 1));
-        spawn(new Wolf(this, new Point(3, 4), 2));
-        spawn(new Wolf(this, new Point(2, 2), 4));
+        Random rand = new Random();
+        for (Organism.Species species : Organism.Species.values()) {
+            for (int i = 0; i < 2; i++) {
+                Point position = getRandomPosition();
+                if (position == null)
+                    return;
+
+                spawn(OrganismsFactory.getOrganism(species, this, position, rand.nextInt(1, 20)));
+            }
+        }
     }
 }
