@@ -8,7 +8,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class GameScreen extends JPanel {
-    private final JButton[][] cells;
+    private final BoardCell[][] cells;
     private final World world;
     private final JTextArea logsArea;
 
@@ -16,7 +16,7 @@ public class GameScreen extends JPanel {
         super();
 
         world = UI.getInstace().getWorld();
-        cells = new JButton[world.getHeight()][world.getWidth()];
+        cells = new BoardCell[world.getHeight()][world.getWidth()];
         logsArea = new JTextArea();
 
         setLayout(new BorderLayout());
@@ -29,15 +29,8 @@ public class GameScreen extends JPanel {
         for (int i = 0; i < world.getHeight(); i++) {
             for (int j = 0; j < world.getWidth(); j++) {
                 Organism organism = world.getMap(j, i);
-                JButton cell = cells[i][j];
-
-                if (organism != null) {
-                    cell.setText(organism.getSymbol());
-                    cell.setBackground(organism.getColor());
-                } else {
-                    cell.setBackground(Color.BLACK);
-                    cell.setText("");
-                }
+                BoardCell cell = cells[i][j];
+                cell.setOrganism(organism);
             }
         }
     }
@@ -53,18 +46,7 @@ public class GameScreen extends JPanel {
         board.setLayout(new GridLayout(world.getHeight(), world.getWidth()));
         for (int i = 0; i < world.getHeight(); i++) {
             for (int j = 0; j < world.getWidth(); j++) {
-                Organism organism = world.getMap(j, i);
-                JButton cell = new JButton();
-                cell.setFocusable(false);
-                cell.setBorderPainted(false);
-                cell.setOpaque(true);
-                cell.setBackground(Color.BLACK);
-
-                if (organism != null) {
-                    cell.setText(organism.getSymbol());
-                    cell.setBackground(organism.getColor());
-                }
-
+                BoardCell cell = new BoardCell(world.getMap(j, i));
                 cells[i][j] = cell;
                 board.add(cell);
             }
