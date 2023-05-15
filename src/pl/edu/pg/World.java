@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.util.*;
 
 public class World {
+    public final static int MAX_WIDTH = 50;
+    public final static int MAX_HEIGHT = 50;
     private final int width, height;
     private Human human;
     private final Organism[][] map;

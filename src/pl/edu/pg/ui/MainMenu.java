@@ -1,6 +1,7 @@
 package pl.edu.pg.ui;
 
 import pl.edu.pg.UI;
+import pl.edu.pg.World;
 
 import javax.swing.*;
 import java.awt.*;
@@ -22,9 +23,12 @@ public class MainMenu extends JPanel {
         titleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         add(titleLabel);
 
-        widthSlider = new JSlider(1, 50, 10);
-        heightSlider = new JSlider(1, 50, 10);
+        widthSlider = new JSlider(1, World.MAX_WIDTH, 10);
+        styleSlider(widthSlider);
         add(widthSlider);
+
+        heightSlider = new JSlider(1, World.MAX_HEIGHT, 10);
+        styleSlider(heightSlider);
         add(heightSlider);
 
         JButton startButton = new JButton("Start");
@@ -33,5 +37,12 @@ public class MainMenu extends JPanel {
             ui.createWorld(widthSlider.getValue(), heightSlider.getValue());
         });
         add(startButton);
+    }
+
+    private void styleSlider(JSlider slider) {
+        slider.setPaintLabels(true);
+        slider.setPaintTicks(true);
+        slider.setMinorTickSpacing(1);
+        slider.setMajorTickSpacing(10);
     }
 }
