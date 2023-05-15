@@ -17,8 +17,34 @@ public class GameScreen extends JPanel {
 
         world = UI.getInstace().getWorld();
         cells = new JButton[world.getHeight()][world.getWidth()];
+        logsArea = new JTextArea();
 
         setLayout(new BorderLayout());
+
+        createBoardPanel();
+        createLogsPanel();
+    }
+
+    public void updateBoard() {
+        for (int i = 0; i < world.getHeight(); i++) {
+            for (int j = 0; j < world.getWidth(); j++) {
+                Organism organism = world.getMap(j, i);
+                JButton cell = cells[i][j];
+                if (organism != null)
+                    cell.setText(organism.getSymbol());
+                else
+                    cell.setText("");
+            }
+        }
+    }
+
+    public void updateLogs() {
+        logsArea.setText("");
+        while (!world.areLogsEmpty())
+            logsArea.append(world.popLog() + '\n');
+    }
+
+    private void createBoardPanel() {
         JPanel board = new JPanel();
         board.setLayout(new GridLayout(world.getHeight(), world.getWidth()));
         for (int i = 0; i < world.getHeight(); i++) {
@@ -34,7 +60,10 @@ public class GameScreen extends JPanel {
             }
         }
 
-        logsArea = new JTextArea();
+        add(board, BorderLayout.CENTER);
+    }
+
+    private void createLogsPanel() {
         logsArea.setEditable(false);
         logsArea.setBackground(Color.LIGHT_GRAY);
         logsArea.setFocusable(false);
@@ -43,27 +72,6 @@ public class GameScreen extends JPanel {
         logs.setPreferredSize(new Dimension(200, UI.HEIGHT));
         logs.setFocusable(false);
 
-        add(board, BorderLayout.CENTER);
         add(logs, BorderLayout.LINE_END);
-    }
-
-    public void updateBoard() {
-        for (int i = 0; i < world.getHeight(); i++) {
-            for (int j = 0; j < world.getWidth(); j++) {
-                Organism organism = world.getMap(j, i);
-                JButton cell = cells[i][j];
-                if (organism != null)
-                    cell.setText(organism.getSymbol());
-                else
-                    cell.setText("");
-
-            }
-        }
-    }
-
-    public void updateLogs() {
-        logsArea.setText("");
-        while (!world.areLogsEmpty())
-            logsArea.append(world.popLog() + '\n');
     }
 }
