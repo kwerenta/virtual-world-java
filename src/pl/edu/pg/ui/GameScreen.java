@@ -25,6 +25,7 @@ public class GameScreen extends JPanel {
             for (int j = 0; j < world.getWidth(); j++) {
                 Organism organism = world.getMap(j, i);
                 JButton cell = new JButton();
+                cell.setFocusable(false);
                 if (organism != null)
                     cell.setText(organism.getSymbol());
 
