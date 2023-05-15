@@ -125,6 +125,20 @@ public class UI extends JFrame implements KeyListener {
         legendDialog.pack();
     }
 
+    private void showControls() {
+        JDialog controlsDialog = new JDialog(this);
+
+        JTextArea controls = new JTextArea();
+        controls.append("Controls\n\n");
+        controls.append("arrows - player movement\n");
+        controls.append("enter  - next turn");
+        controls.setEditable(false);
+        controlsDialog.add(controls);
+
+        controlsDialog.setVisible(true);
+        controlsDialog.pack();
+    }
+
     private void createMenuBar() {
         JMenuBar menuBar = new JMenuBar();
         JMenu menu = new JMenu("Menu");
@@ -153,6 +167,10 @@ public class UI extends JFrame implements KeyListener {
         JMenuItem legendItem = new JMenuItem("Legend");
         legendItem.addActionListener(e -> showLegend());
         menu.add(legendItem);
+
+        JMenuItem controlsItem = new JMenuItem("Controls");
+        controlsItem.addActionListener(e -> showControls());
+        menu.add(controlsItem);
 
         setJMenuBar(menuBar);
     }
