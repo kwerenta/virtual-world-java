@@ -23,7 +23,8 @@ public abstract class Organism {
         FOX,
         TURTLE,
         GRASS,
-        DANDELION
+        DANDELION,
+        BELLADONNA
     }
 
     private final World world;

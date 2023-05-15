@@ -1,6 +1,7 @@
 package pl.edu.pg;
 
 import pl.edu.pg.animals.*;
+import pl.edu.pg.plants.Belladonna;
 import pl.edu.pg.plants.Dandelion;
 import pl.edu.pg.plants.Grass;
 
@@ -18,6 +19,7 @@ public class OrganismsFactory {
             case TURTLE -> new Turtle(world, position, age);
             case GRASS -> new Grass(world, position, age);
             case DANDELION -> new Dandelion(world, position, age);
+            case BELLADONNA -> new Belladonna(world, position, age);
         };
     }
 }
