@@ -34,12 +34,14 @@ public class GameScreen extends JPanel {
             }
         }
 
-        JPanel logs = new JPanel();
-        logs.setPreferredSize(new Dimension(200, UI.HEIGHT));
-        logs.setBackground(Color.GRAY);
         logsArea = new JTextArea();
         logsArea.setEditable(false);
-        logs.add(logsArea);
+        logsArea.setBackground(Color.LIGHT_GRAY);
+        logsArea.setFocusable(false);
+
+        JScrollPane logs = new JScrollPane(logsArea);
+        logs.setPreferredSize(new Dimension(200, UI.HEIGHT));
+        logs.setFocusable(false);
 
         add(board, BorderLayout.CENTER);
         add(logs, BorderLayout.LINE_END);
