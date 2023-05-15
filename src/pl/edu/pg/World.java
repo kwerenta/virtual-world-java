@@ -2,6 +2,8 @@ package pl.edu.pg;
 
 import pl.edu.pg.animals.Human;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.*;
 
 public class World {
@@ -11,11 +13,15 @@ public class World {
     private final PriorityQueue<Organism> actionOrder = new PriorityQueue<>(new OrganismComparator());
     private final Stack<String> logs = new Stack<>();
 
-    public World(int width, int height) {
+    public World(int width, int height, Scanner scanner) {
         this.width = width;
         this.height = height;
         map = new Organism[height][width];
-        populate();
+
+        if (scanner == null)
+            populate();
+        else
+            load(scanner);
     }
 
     public Organism getMap(Point pos) {
@@ -102,6 +108,38 @@ public class World {
 
     public List<Point> getAdjacentPositions(Point position, int range) {
         return getAdjacentPositions(position, range, false);
+    }
+
+    public void save() {
+        try (FileWriter writer = new FileWriter("save.txt")) {
+            writer.write(width + " " + height + '\n');
+            for (Organism[] organismArr : map) {
+                for (Organism organism : organismArr) {
+                    if (organism == null) continue;
+                    writer.write(organism.toString() + '\n');
+                }
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private void load(Scanner scanner) {
+        while (scanner.hasNext()) {
+            Organism.Species species = Organism.Species.values()[scanner.nextInt()];
+            int x = scanner.nextInt();
+            int y = scanner.nextInt();
+            int age = scanner.nextInt();
+            int strength = scanner.nextInt();
+
+            Organism organism = OrganismsFactory.getOrganism(species, this, new Point(x, y), age);
+            spawn(organism);
+            organism.setStrength(strength);
+            if (organism instanceof Human h) {
+                h.setAbilityTimer(scanner.nextInt());
+                this.human = h;
+            }
+        }
     }
 
     private List<Point> getAdjacentPositions(Point position, int range, boolean shouldBeFree) {

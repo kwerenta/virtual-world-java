@@ -74,6 +74,15 @@ public class Human extends Animal {
         return Species.HUMAN;
     }
 
+    @Override
+    public String toString() {
+        return super.toString() + " " + abilityTimer;
+    }
+
+    public void setAbilityTimer(int abilityTimer) {
+        this.abilityTimer = abilityTimer;
+    }
+
     private void ability() {
         if (abilityTimer > 0)
             getWorld().addLog("Your ability is still active for " + abilityTimer + " turn(s)");

@@ -8,6 +8,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
 
 public class UI extends JFrame implements KeyListener {
     private static UI instance;
@@ -37,6 +40,22 @@ public class UI extends JFrame implements KeyListener {
         newGameItem.addActionListener(e -> destroyWorld());
         menu.add(newGameItem);
 
+        JMenuItem saveGameItem = new JMenuItem("Save Game");
+        saveGameItem.addActionListener(e -> {
+            if (world != null) world.save();
+        });
+        menu.add(saveGameItem);
+
+        JMenuItem loadGameItem = new JMenuItem("Load Game");
+        loadGameItem.addActionListener(e -> {
+            try {
+                loadWorld();
+            } catch (FileNotFoundException ex) {
+                throw new RuntimeException(ex);
+            }
+        });
+        menu.add(loadGameItem);
+
         setJMenuBar(menuBar);
         add(container);
 
@@ -46,18 +65,24 @@ public class UI extends JFrame implements KeyListener {
         requestFocus();
     }
 
-    public void createWorld(int width, int height) {
+    public void createWorld(int width, int height, Scanner scanner) {
         if (world == null) {
-            world = new World(width, height);
+            world = new World(width, height, scanner);
 
             gameScreen = new GameScreen();
             container.add(gameScreen, Screens.GAME.toString());
+            setScreen(Screens.GAME);
         }
+    }
+
+    public void createWorld(int width, int height) {
+        createWorld(width, height, null);
     }
 
     public void destroyWorld() {
         setScreen(Screens.MAIN_MENU);
-        container.remove(gameScreen);
+        if (gameScreen != null)
+            container.remove(gameScreen);
         gameScreen = null;
         world = null;
     }
@@ -89,6 +114,16 @@ public class UI extends JFrame implements KeyListener {
             gameScreen.updateLogs();
         } else if (world.getHuman() != null) {
             world.getHuman().handleUserInput(e.getKeyCode());
+        }
+    }
+
+    private void loadWorld() throws FileNotFoundException {
+        try (Scanner scanner = new Scanner(new File("save.txt"))) {
+            int width = scanner.nextInt();
+            int height = scanner.nextInt();
+
+            destroyWorld();
+            createWorld(width, height, scanner);
         }
     }
 

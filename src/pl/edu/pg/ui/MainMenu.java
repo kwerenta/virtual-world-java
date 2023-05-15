@@ -31,7 +31,6 @@ public class MainMenu extends JPanel {
         startButton.addActionListener(e -> {
             UI ui = UI.getInstace();
             ui.createWorld(widthSlider.getValue(), heightSlider.getValue());
-            ui.setScreen(Screens.GAME);
         });
         add(startButton);
     }

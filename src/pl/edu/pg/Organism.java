@@ -118,4 +118,9 @@ public abstract class Organism {
     public abstract Color getColor();
 
     public abstract Species getSpecies();
+
+    @Override
+    public String toString() {
+        return getSpecies().ordinal() + " " + position.getX() + " " + position.getY() + " " + age + " " + strength;
+    }
 }
