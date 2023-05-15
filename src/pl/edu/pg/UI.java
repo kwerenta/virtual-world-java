@@ -2,6 +2,7 @@ package pl.edu.pg;
 
 import pl.edu.pg.ui.GameScreen;
 import pl.edu.pg.ui.MainMenu;
+import pl.edu.pg.ui.MenuBar;
 import pl.edu.pg.ui.Screens;
 
 import javax.swing.*;
@@ -31,7 +32,7 @@ public class UI extends JFrame implements KeyListener {
         container.setLayout(new CardLayout());
         container.add(new MainMenu(), Screens.MAIN_MENU.toString());
 
-        createMenuBar();
+        setJMenuBar(new MenuBar());
         add(container);
 
         addKeyListener(this);
@@ -92,7 +93,7 @@ public class UI extends JFrame implements KeyListener {
         }
     }
 
-    private void loadWorld() throws FileNotFoundException {
+    public void loadWorld() throws FileNotFoundException {
         try (Scanner scanner = new Scanner(new File("save.txt"))) {
             int width = scanner.nextInt();
             int height = scanner.nextInt();
@@ -100,79 +101,6 @@ public class UI extends JFrame implements KeyListener {
             destroyWorld();
             createWorld(width, height, scanner);
         }
-    }
-
-    private void showLegend() {
-        JDialog legendDialog = new JDialog(this);
-
-        JTextArea legend = new JTextArea();
-        legend.append("Legend\n\n");
-        legend.append("H - Human\n");
-        legend.append("A - Antelope\n");
-        legend.append("F - Fox\n");
-        legend.append("S - Sheep\n");
-        legend.append("T - Turtle\n");
-        legend.append("W - Wolf\n");
-        legend.append("B - Belladonna\n");
-        legend.append("D - Dandelion\n");
-        legend.append("G - Grass\n");
-        legend.append("U - Guarana\n");
-        legend.append("O - Hogweed\n");
-        legend.setEditable(false);
-        legendDialog.add(legend);
-
-        legendDialog.setVisible(true);
-        legendDialog.pack();
-    }
-
-    private void showControls() {
-        JDialog controlsDialog = new JDialog(this);
-
-        JTextArea controls = new JTextArea();
-        controls.append("Controls\n\n");
-        controls.append("arrows - player movement\n");
-        controls.append("enter  - next turn");
-        controls.setEditable(false);
-        controlsDialog.add(controls);
-
-        controlsDialog.setVisible(true);
-        controlsDialog.pack();
-    }
-
-    private void createMenuBar() {
-        JMenuBar menuBar = new JMenuBar();
-        JMenu menu = new JMenu("Menu");
-        menuBar.add(menu);
-
-        JMenuItem newGameItem = new JMenuItem("New Game");
-        newGameItem.addActionListener(e -> destroyWorld());
-        menu.add(newGameItem);
-
-        JMenuItem saveGameItem = new JMenuItem("Save Game");
-        saveGameItem.addActionListener(e -> {
-            if (world != null) world.save();
-        });
-        menu.add(saveGameItem);
-
-        JMenuItem loadGameItem = new JMenuItem("Load Game");
-        loadGameItem.addActionListener(e -> {
-            try {
-                loadWorld();
-            } catch (FileNotFoundException ex) {
-                throw new RuntimeException(ex);
-            }
-        });
-        menu.add(loadGameItem);
-
-        JMenuItem legendItem = new JMenuItem("Legend");
-        legendItem.addActionListener(e -> showLegend());
-        menu.add(legendItem);
-
-        JMenuItem controlsItem = new JMenuItem("Controls");
-        controlsItem.addActionListener(e -> showControls());
-        menu.add(controlsItem);
-
-        setJMenuBar(menuBar);
     }
 
     @Override
