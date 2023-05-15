@@ -1,6 +1,7 @@
 package pl.edu.pg;
 
 import java.util.Comparator;
+import java.util.List;
 
 class OrganismComparator implements Comparator<Organism> {
     @Override
@@ -25,7 +26,8 @@ public abstract class Organism {
         GRASS,
         DANDELION,
         BELLADONNA,
-        GUARANA
+        GUARANA,
+        HOGWEED,
     }
 
     private final World world;
@@ -72,6 +74,10 @@ public abstract class Organism {
 
     public int getInitiative() {
         return initiative;
+    }
+
+    public List<Point> getAdjacentPositions() {
+        return getWorld().getAdjacentPositions(position, 1);
     }
 
     public Point getAdjacentPosition(int range) {

@@ -93,7 +93,7 @@ public class World {
         return positions.get(rand.nextInt(positions.size()));
     }
 
-    private List<Point> getAdjacentPositions(Point position, int range) {
+    public List<Point> getAdjacentPositions(Point position, int range) {
         return getAdjacentPositions(position, range, false);
     }
 

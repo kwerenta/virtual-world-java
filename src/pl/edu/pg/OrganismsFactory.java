@@ -1,10 +1,7 @@
 package pl.edu.pg;
 
 import pl.edu.pg.animals.*;
-import pl.edu.pg.plants.Belladonna;
-import pl.edu.pg.plants.Dandelion;
-import pl.edu.pg.plants.Grass;
-import pl.edu.pg.plants.Guarana;
+import pl.edu.pg.plants.*;
 
 public class OrganismsFactory {
     public static Organism getOrganism(Organism.Species species, World world, Point position) {
@@ -22,6 +19,7 @@ public class OrganismsFactory {
             case DANDELION -> new Dandelion(world, position, age);
             case BELLADONNA -> new Belladonna(world, position, age);
             case GUARANA -> new Guarana(world, position, age);
+            case HOGWEED -> new Hogweed(world, position, age);
         };
     }
 }
