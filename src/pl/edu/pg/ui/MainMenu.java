@@ -22,8 +22,8 @@ public class MainMenu extends JPanel {
         titleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         add(titleLabel);
 
-        widthSlider = new JSlider(1, 30, 10);
-        heightSlider = new JSlider(1, 30, 10);
+        widthSlider = new JSlider(1, 50, 10);
+        heightSlider = new JSlider(1, 50, 10);
         add(widthSlider);
         add(heightSlider);
 

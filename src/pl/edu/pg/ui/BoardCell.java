@@ -12,6 +12,7 @@ public class BoardCell extends JButton {
         setFocusable(false);
         setBorderPainted(false);
         setOpaque(true);
+        setMargin(new Insets(0, 0, 0, 0));
         setOrganism(organism);
     }
 

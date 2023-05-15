@@ -8,6 +8,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class GameScreen extends JPanel {
+    private final static int LOGS_PANEL_WIDTH = 200;
     private final BoardCell[][] cells;
     private final World world;
     private final JTextArea logsArea;
@@ -61,7 +62,7 @@ public class GameScreen extends JPanel {
         logsArea.setFocusable(false);
 
         JScrollPane logs = new JScrollPane(logsArea);
-        logs.setPreferredSize(new Dimension(200, UI.HEIGHT));
+        logs.setPreferredSize(new Dimension(LOGS_PANEL_WIDTH, UI.HEIGHT));
         logs.setFocusable(false);
 
         add(logs, BorderLayout.LINE_END);

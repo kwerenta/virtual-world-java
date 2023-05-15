@@ -25,7 +25,6 @@ public class UI extends JFrame implements KeyListener {
 
         setTitle("Virtual World");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setResizable(false);
         setSize(WIDTH, HEIGHT);
 
         container = new JPanel();
