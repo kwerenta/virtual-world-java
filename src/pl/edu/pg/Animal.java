@@ -22,7 +22,7 @@ public abstract class Animal extends Organism {
         getWorld().setMap(newPosition, this);
         getWorld().setMap(position, null);
         position.update(newPosition);
-        getWorld().addLog(getSymbol() + " moved to " + position);
+        getWorld().addLog(getName() + " moved to " + position);
     }
 
     @Override
@@ -33,14 +33,14 @@ public abstract class Animal extends Organism {
         }
 
         if (hasRepelled(attacker)) {
-            getWorld().addLog(getSymbol() + " repelled attack of " + attacker.getSymbol());
+            getWorld().addLog(getName() + " repelled attack of " + attacker.getSymbol() + " " + position.toString());
             return;
         }
 
         if (hasRunAway()) {
             shouldSkipTurn = true;
             attacker.move(position);
-            getWorld().addLog(getSymbol() + " avoided fight with " + attacker.getSymbol());
+            getWorld().addLog(getName() + " avoided fight with " + attacker.getSymbol() + " " + position.toString());
             move(getFreePosition());
             getWorld().setMap(position, this);
             return;
@@ -49,10 +49,10 @@ public abstract class Animal extends Organism {
         if (attacker.getStrength() >= getStrength()) {
             getWorld().despawn(this);
             attacker.move(position);
-            getWorld().addLog(attacker.getSymbol() + " attacked and won with " + getSymbol());
+            getWorld().addLog(attacker.getName() + " attacked and won with " + getName() + " " + position.toString());
         } else {
             getWorld().despawn(attacker);
-            getWorld().addLog(attacker.getSymbol() + " attacked and lost with " + getSymbol());
+            getWorld().addLog(attacker.getName() + " attacked and lost with " + getName() + " " + attacker.position.toString());
         }
     }
 
@@ -64,7 +64,7 @@ public abstract class Animal extends Organism {
         if (newPosition == getPosition()) return;
 
         getWorld().spawn(OrganismsFactory.getOrganism(getSpecies(), getWorld(), newPosition));
-        getWorld().addLog("New " + getSymbol() + " has born " + newPosition);
+        getWorld().addLog("New " + getName() + " has born " + newPosition);
 
     }
 

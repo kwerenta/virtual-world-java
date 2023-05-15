@@ -19,17 +19,28 @@ class OrganismComparator implements Comparator<Organism> {
 
 public abstract class Organism {
     public enum Species {
-        HUMAN,
-        ANTELOPE,
-        SHEEP,
-        WOLF,
-        FOX,
-        TURTLE,
-        GRASS,
-        DANDELION,
-        BELLADONNA,
-        GUARANA,
-        HOGWEED,
+        HUMAN("Human"),
+        ANTELOPE("Antelope"),
+        SHEEP("Sheep"),
+        WOLF("Wolf"),
+        FOX("Fox"),
+        TURTLE("Turtle"),
+        GRASS("Grass"),
+        DANDELION("Dandelion"),
+        BELLADONNA("Belladonna"),
+        GUARANA("Guarana"),
+        HOGWEED("Hogweed");
+
+        private final String value;
+
+        Species(final String value) {
+            this.value = value;
+        }
+
+        @Override
+        public String toString() {
+            return value;
+        }
     }
 
     private final World world;
@@ -99,6 +110,10 @@ public abstract class Organism {
     public abstract void collision(Animal attacker);
 
     public abstract String getSymbol();
+
+    public String getName() {
+        return getSpecies().toString();
+    }
 
     public abstract Color getColor();
 

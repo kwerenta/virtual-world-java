@@ -18,7 +18,7 @@ public class Belladonna extends Plant {
     public void collision(Animal attacker) {
         super.collision(attacker);
         getWorld().despawn(attacker);
-        getWorld().addLog(getSymbol() + " killed " + attacker.getSymbol());
+        getWorld().addLog(getName() + " killed " + attacker.getSymbol());
     }
 
     @Override

@@ -17,7 +17,7 @@ public class Guarana extends Plant {
     public void collision(Animal attakcer) {
         super.collision(attakcer);
         attakcer.setStrength(attakcer.getStrength() + 3);
-        getWorld().addLog("Strength of " + attakcer.getSymbol() + " has increased to " + attakcer.getStrength());
+        getWorld().addLog("Strength of " + attakcer.getName() + " has increased to " + attakcer.getName());
     }
 
     @Override

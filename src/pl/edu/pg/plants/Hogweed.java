@@ -21,7 +21,7 @@ public class Hogweed extends Plant {
             Organism target = getWorld().getMap(position);
             if (target instanceof Animal) {
                 getWorld().despawn(target);
-                getWorld().addLog(getSymbol() + " killed nearby " + target.getSymbol() + " " + target.getPosition());
+                getWorld().addLog(getName() + " killed nearby " + target.getName() + " " + target.getPosition());
             }
         }
 
@@ -32,7 +32,7 @@ public class Hogweed extends Plant {
     public void collision(Animal attacker) {
         super.collision(attacker);
         getWorld().despawn(attacker);
-        getWorld().addLog(getSymbol() + " killed " + attacker.getSymbol());
+        getWorld().addLog(getName() + " killed " + attacker.getName());
     }
 
     @Override

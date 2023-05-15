@@ -18,7 +18,7 @@ public class Turtle extends Animal {
         Random rand = new Random();
         if (rand.nextInt(4) != 0) {
             shouldSkipTurn = true;
-            getWorld().addLog(getSymbol() + " stayed at place " + position);
+            getWorld().addLog(getName() + " stayed at place " + position);
         } else
             super.action();
     }
