@@ -1,6 +1,7 @@
 package pl.edu.pg.ui;
 
 import pl.edu.pg.Organism;
+import pl.edu.pg.Point;
 import pl.edu.pg.UI;
 import pl.edu.pg.World;
 
@@ -47,7 +48,7 @@ public class GameScreen extends JPanel {
         board.setLayout(new GridLayout(world.getHeight(), world.getWidth()));
         for (int i = 0; i < world.getHeight(); i++) {
             for (int j = 0; j < world.getWidth(); j++) {
-                BoardCell cell = new BoardCell(world.getMap(j, i));
+                BoardCell cell = new BoardCell(world.getMap(j, i), new Point(j, i));
                 cells[i][j] = cell;
                 board.add(cell);
             }

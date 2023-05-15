@@ -79,6 +79,10 @@ public class UI extends JFrame implements KeyListener {
         return instance;
     }
 
+    public GameScreen getGameScreen() {
+        return gameScreen;
+    }
+
     @Override
     public void keyPressed(KeyEvent e) {
         if (world == null)
