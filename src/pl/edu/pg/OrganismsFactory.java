@@ -1,6 +1,7 @@
 package pl.edu.pg;
 
 import pl.edu.pg.animals.*;
+import pl.edu.pg.plants.Dandelion;
 import pl.edu.pg.plants.Grass;
 
 public class OrganismsFactory {
@@ -12,10 +13,11 @@ public class OrganismsFactory {
         return switch (species) {
             case SHEEP -> new Sheep(world, position, age);
             case WOLF -> new Wolf(world, position, age);
-            case GRASS -> new Grass(world, position, age);
             case FOX -> new Fox(world, position, age);
             case ANTELOPE -> new Antelope(world, position, age);
             case TURTLE -> new Turtle(world, position, age);
+            case GRASS -> new Grass(world, position, age);
+            case DANDELION -> new Dandelion(world, position, age);
         };
     }
 }

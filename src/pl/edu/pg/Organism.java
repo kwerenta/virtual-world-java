@@ -22,7 +22,8 @@ public abstract class Organism {
         WOLF,
         FOX,
         TURTLE,
-        GRASS
+        GRASS,
+        DANDELION
     }
 
     private final World world;
