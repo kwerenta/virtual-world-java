@@ -80,26 +80,26 @@ public class World {
         return position.getX() >= 0 && position.getX() < width && position.getY() >= 0 && position.getY() < height;
     }
 
-    public Point getFreePosition(Point position) {
-        List<Point> positions = getAdjacentPositions(position, true);
+    public Point getFreePosition(Point position, int range) {
+        List<Point> positions = getAdjacentPositions(position, range, true);
         if (positions.isEmpty()) return position;
         Random rand = new Random();
         return positions.get(rand.nextInt(positions.size()));
     }
 
-    public Point getAdjacentPosition(Point position) {
-        List<Point> positions = getAdjacentPositions(position);
+    public Point getAdjacentPosition(Point position, int range) {
+        List<Point> positions = getAdjacentPositions(position, range);
         Random rand = new Random();
         return positions.get(rand.nextInt(positions.size()));
     }
 
-    private List<Point> getAdjacentPositions(Point position) {
-        return getAdjacentPositions(position, false);
+    private List<Point> getAdjacentPositions(Point position, int range) {
+        return getAdjacentPositions(position, range, false);
     }
 
-    private List<Point> getAdjacentPositions(Point position, boolean shouldBeFree) {
+    private List<Point> getAdjacentPositions(Point position, int range, boolean shouldBeFree) {
         List<Point> vectors = new ArrayList<>(
-                Arrays.asList(new Point(1, 0), new Point(-1, 0), new Point(0, 1), new Point(0, -1))
+                Arrays.asList(new Point(range, 0), new Point(-1 * range, 0), new Point(0, range), new Point(0, -1 * range))
         );
         return vectors.stream()
                 .map(vector -> vector.getTranslated(position))

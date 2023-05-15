@@ -60,7 +60,7 @@ public abstract class Animal extends Organism {
         if (getAge() == 0 || shouldSkipTurn) return;
         shouldSkipTurn = true;
 
-        Point newPosition = getWorld().getFreePosition(getPosition());
+        Point newPosition = getFreePosition();
         if (newPosition == getPosition()) return;
 
         getWorld().spawn(OrganismsFactory.getOrganism(getSpecies(), getWorld(), newPosition));

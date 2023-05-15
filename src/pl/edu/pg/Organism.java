@@ -17,6 +17,7 @@ class OrganismComparator implements Comparator<Organism> {
 
 public abstract class Organism {
     public enum Species {
+        ANTELOPE,
         SHEEP,
         WOLF,
         FOX,
@@ -69,12 +70,16 @@ public abstract class Organism {
         return initiative;
     }
 
+    public Point getAdjacentPosition(int range) {
+        return getWorld().getAdjacentPosition(position, range);
+    }
+
     public Point getAdjacentPosition() {
-        return getWorld().getAdjacentPosition(position);
+        return getWorld().getAdjacentPosition(position, 1);
     }
 
     public Point getFreePosition() {
-        return getWorld().getFreePosition(position);
+        return getWorld().getFreePosition(position, 1);
     }
 
     public abstract void action();
