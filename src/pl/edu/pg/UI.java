@@ -32,31 +32,7 @@ public class UI extends JFrame implements KeyListener {
         container.setLayout(new CardLayout());
         container.add(new MainMenu(), Screens.MAIN_MENU.toString());
 
-        JMenuBar menuBar = new JMenuBar();
-        JMenu menu = new JMenu("Menu");
-        menuBar.add(menu);
-
-        JMenuItem newGameItem = new JMenuItem("New Game");
-        newGameItem.addActionListener(e -> destroyWorld());
-        menu.add(newGameItem);
-
-        JMenuItem saveGameItem = new JMenuItem("Save Game");
-        saveGameItem.addActionListener(e -> {
-            if (world != null) world.save();
-        });
-        menu.add(saveGameItem);
-
-        JMenuItem loadGameItem = new JMenuItem("Load Game");
-        loadGameItem.addActionListener(e -> {
-            try {
-                loadWorld();
-            } catch (FileNotFoundException ex) {
-                throw new RuntimeException(ex);
-            }
-        });
-        menu.add(loadGameItem);
-
-        setJMenuBar(menuBar);
+        createMenuBar();
         add(container);
 
         addKeyListener(this);
@@ -133,5 +109,33 @@ public class UI extends JFrame implements KeyListener {
 
     @Override
     public void keyTyped(KeyEvent e) {
+    }
+
+    private void createMenuBar() {
+        JMenuBar menuBar = new JMenuBar();
+        JMenu menu = new JMenu("Menu");
+        menuBar.add(menu);
+
+        JMenuItem newGameItem = new JMenuItem("New Game");
+        newGameItem.addActionListener(e -> destroyWorld());
+        menu.add(newGameItem);
+
+        JMenuItem saveGameItem = new JMenuItem("Save Game");
+        saveGameItem.addActionListener(e -> {
+            if (world != null) world.save();
+        });
+        menu.add(saveGameItem);
+
+        JMenuItem loadGameItem = new JMenuItem("Load Game");
+        loadGameItem.addActionListener(e -> {
+            try {
+                loadWorld();
+            } catch (FileNotFoundException ex) {
+                throw new RuntimeException(ex);
+            }
+        });
+        menu.add(loadGameItem);
+
+        setJMenuBar(menuBar);
     }
 }
