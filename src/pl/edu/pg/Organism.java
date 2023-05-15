@@ -21,6 +21,7 @@ public abstract class Organism {
         SHEEP,
         WOLF,
         FOX,
+        TURTLE,
         GRASS
     }
 

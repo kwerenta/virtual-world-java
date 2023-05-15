@@ -1,7 +1,7 @@
 package pl.edu.pg;
 
 public abstract class Animal extends Organism {
-    private boolean shouldSkipTurn = false;
+    protected boolean shouldSkipTurn = false;
 
     public Animal(World world, Point position, int age, int strength, int initiative) {
         super(world, position, age, strength, initiative);
