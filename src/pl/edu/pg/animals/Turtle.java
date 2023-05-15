@@ -4,6 +4,7 @@ import pl.edu.pg.Animal;
 import pl.edu.pg.Point;
 import pl.edu.pg.World;
 
+import java.awt.*;
 import java.util.Random;
 
 public class Turtle extends Animal {
@@ -30,6 +31,11 @@ public class Turtle extends Animal {
     @Override
     public String getSymbol() {
         return "T";
+    }
+
+    @Override
+    public Color getColor() {
+        return new Color(0x16a34a);
     }
 
     @Override

@@ -5,6 +5,7 @@ import pl.edu.pg.Organism;
 import pl.edu.pg.Point;
 import pl.edu.pg.World;
 
+import java.awt.*;
 import java.awt.event.KeyEvent;
 
 public class Human extends Animal {
@@ -44,6 +45,11 @@ public class Human extends Animal {
     @Override
     public String getSymbol() {
         return "H";
+    }
+
+    @Override
+    public Color getColor() {
+        return new Color(0xfdba74);
     }
 
     @Override

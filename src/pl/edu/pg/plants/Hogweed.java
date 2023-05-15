@@ -1,7 +1,9 @@
 package pl.edu.pg.plants;
 
 import pl.edu.pg.*;
+import pl.edu.pg.Point;
 
+import java.awt.*;
 import java.util.List;
 
 // PL: Barszcz Sosnowskiego
@@ -36,6 +38,11 @@ public class Hogweed extends Plant {
     @Override
     public String getSymbol() {
         return "O";
+    }
+
+    @Override
+    public Color getColor() {
+        return new Color(0xdcfce7);
     }
 
     @Override

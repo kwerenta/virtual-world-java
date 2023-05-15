@@ -5,6 +5,8 @@ import pl.edu.pg.Organism;
 import pl.edu.pg.Point;
 import pl.edu.pg.World;
 
+import java.awt.*;
+
 public class Fox extends Animal {
 
     public Fox(World world, Point position, int age) {
@@ -28,6 +30,11 @@ public class Fox extends Animal {
     @Override
     public String getSymbol() {
         return "F";
+    }
+
+    @Override
+    public Color getColor() {
+        return new Color(0xc2410c);
     }
 
     @Override

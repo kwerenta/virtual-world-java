@@ -1,5 +1,6 @@
 package pl.edu.pg;
 
+import java.awt.*;
 import java.util.Comparator;
 import java.util.List;
 
@@ -98,6 +99,8 @@ public abstract class Organism {
     public abstract void collision(Animal attacker);
 
     public abstract String getSymbol();
+
+    public abstract Color getColor();
 
     public abstract Species getSpecies();
 }

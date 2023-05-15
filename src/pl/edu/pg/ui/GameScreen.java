@@ -30,10 +30,14 @@ public class GameScreen extends JPanel {
             for (int j = 0; j < world.getWidth(); j++) {
                 Organism organism = world.getMap(j, i);
                 JButton cell = cells[i][j];
-                if (organism != null)
+
+                if (organism != null) {
                     cell.setText(organism.getSymbol());
-                else
+                    cell.setBackground(organism.getColor());
+                } else {
+                    cell.setBackground(Color.BLACK);
                     cell.setText("");
+                }
             }
         }
     }
@@ -52,8 +56,14 @@ public class GameScreen extends JPanel {
                 Organism organism = world.getMap(j, i);
                 JButton cell = new JButton();
                 cell.setFocusable(false);
-                if (organism != null)
+                cell.setBorderPainted(false);
+                cell.setOpaque(true);
+                cell.setBackground(Color.BLACK);
+
+                if (organism != null) {
                     cell.setText(organism.getSymbol());
+                    cell.setBackground(organism.getColor());
+                }
 
                 cells[i][j] = cell;
                 board.add(cell);

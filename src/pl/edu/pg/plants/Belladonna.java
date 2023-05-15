@@ -5,6 +5,8 @@ import pl.edu.pg.Plant;
 import pl.edu.pg.Point;
 import pl.edu.pg.World;
 
+import java.awt.*;
+
 // PL: Wilcze jagody
 public class Belladonna extends Plant {
 
@@ -22,6 +24,11 @@ public class Belladonna extends Plant {
     @Override
     public String getSymbol() {
         return "B";
+    }
+
+    @Override
+    public Color getColor() {
+        return new Color(0x4f46e5);
     }
 
     @Override

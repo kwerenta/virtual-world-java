@@ -5,6 +5,7 @@ import pl.edu.pg.Organism;
 import pl.edu.pg.Point;
 import pl.edu.pg.World;
 
+import java.awt.*;
 import java.util.Random;
 
 public class Antelope extends Animal {
@@ -33,6 +34,11 @@ public class Antelope extends Animal {
     @Override
     public String getSymbol() {
         return "A";
+    }
+
+    @Override
+    public Color getColor() {
+        return new Color(0x92400e);
     }
 
     @Override

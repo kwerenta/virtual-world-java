@@ -5,6 +5,8 @@ import pl.edu.pg.Plant;
 import pl.edu.pg.Point;
 import pl.edu.pg.World;
 
+import java.awt.*;
+
 public class Guarana extends Plant {
 
     public Guarana(World world, Point position, int age) {
@@ -21,6 +23,11 @@ public class Guarana extends Plant {
     @Override
     public String getSymbol() {
         return "U";
+    }
+
+    @Override
+    public Color getColor() {
+        return new Color(0xef4444);
     }
 
     @Override
