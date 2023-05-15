@@ -102,12 +102,27 @@ public class UI extends JFrame implements KeyListener {
         }
     }
 
-    @Override
-    public void keyReleased(KeyEvent e) {
-    }
+    private void showLegend() {
+        JDialog legendDialog = new JDialog(this);
 
-    @Override
-    public void keyTyped(KeyEvent e) {
+        JTextArea legend = new JTextArea();
+        legend.append("Legend\n\n");
+        legend.append("H - Human\n");
+        legend.append("A - Antelope\n");
+        legend.append("F - Fox\n");
+        legend.append("S - Sheep\n");
+        legend.append("T - Turtle\n");
+        legend.append("W - Wolf\n");
+        legend.append("B - Belladonna\n");
+        legend.append("D - Dandelion\n");
+        legend.append("G - Grass\n");
+        legend.append("U - Guarana\n");
+        legend.append("O - Hogweed\n");
+        legend.setEditable(false);
+        legendDialog.add(legend);
+
+        legendDialog.setVisible(true);
+        legendDialog.pack();
     }
 
     private void createMenuBar() {
@@ -135,6 +150,18 @@ public class UI extends JFrame implements KeyListener {
         });
         menu.add(loadGameItem);
 
+        JMenuItem legendItem = new JMenuItem("Legend");
+        legendItem.addActionListener(e -> showLegend());
+        menu.add(legendItem);
+
         setJMenuBar(menuBar);
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
     }
 }
