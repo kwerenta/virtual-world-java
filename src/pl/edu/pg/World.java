@@ -1,12 +1,14 @@
 package pl.edu.pg;
 
+import pl.edu.pg.animals.Human;
+
 import java.util.*;
 
 public class World {
     private final int width, height;
+    private Human human;
     private final Organism[][] map;
     private final PriorityQueue<Organism> actionOrder = new PriorityQueue<>(new OrganismComparator());
-
     private final Stack<String> logs = new Stack<>();
 
     public World(int width, int height) {
@@ -42,6 +44,7 @@ public class World {
     }
 
     public void despawn(Organism organism) {
+        if (organism instanceof Human) human = null;
         setMap(organism.position, null);
         organism.kill();
         actionOrder.remove(organism);
@@ -74,6 +77,10 @@ public class World {
 
     public boolean areLogsEmpty() {
         return logs.empty();
+    }
+
+    public Human getHuman() {
+        return human;
     }
 
     public boolean isValidPosition(Point position) {
@@ -121,7 +128,14 @@ public class World {
 
     private void populate() {
         Random rand = new Random();
+
+        Human h = (Human) OrganismsFactory.getOrganism(Organism.Species.HUMAN, this, getRandomPosition(), rand.nextInt(1, 20));
+        human = h;
+        spawn(h);
+
         for (Organism.Species species : Organism.Species.values()) {
+            if (species == Organism.Species.HUMAN) continue;
+
             for (int i = 0; i < 2; i++) {
                 Point position = getRandomPosition();
                 if (position == null)

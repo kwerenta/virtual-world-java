@@ -87,8 +87,9 @@ public class UI extends JFrame implements KeyListener {
             world.makeTurn();
             gameScreen.updateBoard();
             gameScreen.updateLogs();
+        } else if (world.getHuman() != null) {
+            world.getHuman().handleUserInput(e.getKeyCode());
         }
-
     }
 
     @Override

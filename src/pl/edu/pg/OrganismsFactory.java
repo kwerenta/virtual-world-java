@@ -10,6 +10,7 @@ public class OrganismsFactory {
 
     public static Organism getOrganism(Organism.Species species, World world, Point position, int age) {
         return switch (species) {
+            case HUMAN -> new Human(world, position, age);
             case SHEEP -> new Sheep(world, position, age);
             case WOLF -> new Wolf(world, position, age);
             case FOX -> new Fox(world, position, age);
