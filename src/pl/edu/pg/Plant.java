@@ -23,7 +23,7 @@ public abstract class Plant extends Organism {
     public void collision(Animal attacker) {
         getWorld().despawn(this);
         attacker.move(position);
-        getWorld().addLog(attacker.getName() + " ate " + getName());
+        getWorld().addLog(attacker.getName() + " ate " + getName() + " " + position);
     }
 
     private void spread() {

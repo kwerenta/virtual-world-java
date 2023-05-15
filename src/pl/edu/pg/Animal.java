@@ -33,14 +33,14 @@ public abstract class Animal extends Organism {
         }
 
         if (hasRepelled(attacker)) {
-            getWorld().addLog(getName() + " repelled attack of " + attacker.getSymbol() + " " + position.toString());
+            getWorld().addLog(getName() + " repelled attack of " + attacker.getName() + " " + position);
             return;
         }
 
         if (hasRunAway()) {
             shouldSkipTurn = true;
             attacker.move(position);
-            getWorld().addLog(getName() + " avoided fight with " + attacker.getSymbol() + " " + position.toString());
+            getWorld().addLog(getName() + " avoided fight with " + attacker.getName() + " " + position);
             move(getFreePosition());
             getWorld().setMap(position, this);
             return;
@@ -49,10 +49,10 @@ public abstract class Animal extends Organism {
         if (attacker.getStrength() >= getStrength()) {
             getWorld().despawn(this);
             attacker.move(position);
-            getWorld().addLog(attacker.getName() + " attacked and won with " + getName() + " " + position.toString());
+            getWorld().addLog(attacker.getName() + " attacked and won with " + getName() + " " + position);
         } else {
             getWorld().despawn(attacker);
-            getWorld().addLog(attacker.getName() + " attacked and lost with " + getName() + " " + attacker.position.toString());
+            getWorld().addLog(attacker.getName() + " attacked and lost with " + getName() + " " + attacker.position);
         }
     }
 
