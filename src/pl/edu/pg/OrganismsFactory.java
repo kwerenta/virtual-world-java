@@ -4,6 +4,7 @@ import pl.edu.pg.animals.*;
 import pl.edu.pg.plants.Belladonna;
 import pl.edu.pg.plants.Dandelion;
 import pl.edu.pg.plants.Grass;
+import pl.edu.pg.plants.Guarana;
 
 public class OrganismsFactory {
     public static Organism getOrganism(Organism.Species species, World world, Point position) {
@@ -20,6 +21,7 @@ public class OrganismsFactory {
             case GRASS -> new Grass(world, position, age);
             case DANDELION -> new Dandelion(world, position, age);
             case BELLADONNA -> new Belladonna(world, position, age);
+            case GUARANA -> new Guarana(world, position, age);
         };
     }
 }

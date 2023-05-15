@@ -24,7 +24,8 @@ public abstract class Organism {
         TURTLE,
         GRASS,
         DANDELION,
-        BELLADONNA
+        BELLADONNA,
+        GUARANA
     }
 
     private final World world;
